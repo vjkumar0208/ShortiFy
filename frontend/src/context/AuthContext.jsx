@@ -4,6 +4,18 @@ import axios from 'axios';
 const AuthContext = createContext(null);
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
+// Configure axios defaults
+axios.defaults.withCredentials = true;
+
+// Add request interceptor to handle HTTPS
+axios.interceptors.request.use((config) => {
+  // If it's a production URL (not localhost), ensure it uses HTTPS
+  if (config.url && !config.url.includes('localhost') && config.url.startsWith('http://')) {
+    config.url = config.url.replace('http://', 'https://');
+  }
+  return config;
+});
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
