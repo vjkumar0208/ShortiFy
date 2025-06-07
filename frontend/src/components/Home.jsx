@@ -63,21 +63,21 @@ const Home = () => {
 
   return (
     <Layout>
-      <div className='min-h-[80vh] flex items-center justify-center p-4'>
-        <div className='bg-white rounded-xl shadow-xl p-8 max-w-lg w-full'>
-          <div className='flex flex-col items-center space-y-6'>
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">ShortiFy</h1>
-            <p className="text-gray-600 text-center mb-4">Enter your long URL and get a shortened version instantly!</p>
+      <div className='min-h-[80vh] flex items-center justify-center p-2 sm:p-4'>
+        <div className='bg-white rounded-xl shadow-xl p-4 sm:p-8 w-full max-w-lg mx-2'>
+          <div className='flex flex-col items-center space-y-4 sm:space-y-6'>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">ShortiFy</h1>
+            <p className="text-sm sm:text-base text-gray-600 text-center mb-2 sm:mb-4">Enter your long URL and get a shortened version instantly!</p>
             
             {error && (
-              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative w-full">
-                <span className="block sm:inline">{error}</span>
+              <div className="bg-red-100 border border-red-400 text-red-700 px-3 py-2 sm:px-4 sm:py-3 rounded-lg relative w-full text-sm sm:text-base">
+                <span className="block pr-8">{error}</span>
                 <button
-                  className="absolute top-0 bottom-0 right-0 px-4 py-3"
+                  className="absolute top-0 bottom-0 right-0 px-2 sm:px-4 py-2 sm:py-3"
                   onClick={() => setError('')}
                 >
                   <span className="sr-only">Dismiss</span>
-                  <svg className="h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <svg className="h-4 w-4 sm:h-6 sm:w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                     <title>Close</title>
                     <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/>
                   </svg>
@@ -85,24 +85,24 @@ const Home = () => {
               </div>
             )}
 
-            <div className="w-full space-y-4">
+            <div className="w-full space-y-3 sm:space-y-4">
               <input
                 value={originalUrl}
                 placeholder='Enter the URL to shorten'
                 onChange={handleUrlChange}
                 type="text"
-                className='w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-center'
+                className='w-full border border-gray-300 rounded-lg p-2 sm:p-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-center'
               />
 
               <button
                 onClick={handleSubmit}
                 type='button'
-                className='w-full bg-blue-600 text-white rounded-lg py-3 px-4 font-medium shadow-md hover:bg-blue-700 hover:shadow-lg active:scale-95 transition-all duration-200'
+                className='w-full bg-blue-600 text-white rounded-lg py-2 sm:py-3 px-3 sm:px-4 text-sm sm:text-base font-medium shadow-md hover:bg-blue-700 hover:shadow-lg active:scale-95 transition-all duration-200'
                 disabled={isLoading}
               >
                 {isLoading ? (
                   <div className="flex items-center justify-center">
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
@@ -110,7 +110,7 @@ const Home = () => {
                   </div>
                 ) : isSuccess ? (
                   <div className="flex items-center justify-center">
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                     Shortened!
@@ -122,14 +122,14 @@ const Home = () => {
             </div>
 
             {shortUrl && (
-              <div className='w-full p-6 bg-gray-50 rounded-xl border border-gray-200 flex flex-col space-y-4 items-center'>
-                <p className='text-gray-700 font-bold text-lg'>Shortened URL:</p>
-                <div className='flex items-center gap-3 flex-wrap justify-center'>
+              <div className='w-full p-3 sm:p-6 bg-gray-50 rounded-xl border border-gray-200 flex flex-col space-y-3 sm:space-y-4 items-center'>
+                <p className='text-gray-700 font-bold text-base sm:text-lg'>Shortened URL:</p>
+                <div className='flex flex-col sm:flex-row items-center gap-2 sm:gap-3 w-full justify-center'>
                   <a
                     href={shortUrl?.fullShortUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className='text-blue-600 hover:underline break-all text-center'
+                    className='text-blue-600 hover:underline break-all text-center text-sm sm:text-base'
                   >
                     {shortUrl?.fullShortUrl}
                   </a>
@@ -139,18 +139,18 @@ const Home = () => {
                       setCopied(true);
                       setTimeout(() => setCopied(false), 2000);
                     }}
-                    className='bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-all text-sm flex items-center gap-2'
+                    className='bg-blue-500 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg hover:bg-blue-600 transition-all text-xs sm:text-sm flex items-center gap-1 sm:gap-2 whitespace-nowrap'
                   >
                     {copied ? (
                       <>
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                         Copied!
                       </>
                     ) : (
                       <>
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
                         </svg>
                         Copy
@@ -162,21 +162,21 @@ const Home = () => {
                 <img 
                   src={shortUrl.qrCodeImg} 
                   alt="QR Code" 
-                  className="max-w-[200px] w-full rounded-lg shadow-md"
+                  className="w-32 sm:w-48 max-w-[200px] rounded-lg shadow-md"
                 />
                 
-                <div className='flex items-center gap-3'>
-                  <span className='text-sm font-semibold text-gray-700'>Total Clicks:</span>
-                  <span className='bg-blue-100 text-blue-700 text-sm font-bold px-4 py-1 rounded-full shadow-sm'>
+                <div className='flex items-center gap-2 sm:gap-3'>
+                  <span className='text-xs sm:text-sm font-semibold text-gray-700'>Total Clicks:</span>
+                  <span className='bg-blue-100 text-blue-700 text-xs sm:text-sm font-bold px-3 sm:px-4 py-1 rounded-full shadow-sm'>
                     {clicks}
                   </span>
                 </div>
 
                 <button
                   onClick={fetchLatestClicks}
-                  className='bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition duration-200 shadow-sm flex items-center gap-2'
+                  className='bg-gray-200 text-gray-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg hover:bg-gray-300 transition duration-200 shadow-sm flex items-center gap-1 sm:gap-2 text-xs sm:text-sm'
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 sm:h-4 sm:w-4" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
                   </svg>
                   <span>Refresh Click Count</span>
